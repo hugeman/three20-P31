@@ -101,6 +101,7 @@
     return @"";
   }
 }
-
-
+- (NSString*)description {
+  return [NSString stringWithFormat:@":%@%@", _name, _next];
+}
 @end

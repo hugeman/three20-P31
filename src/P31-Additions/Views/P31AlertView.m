@@ -202,9 +202,8 @@ const static CGFloat kButtonHeight = 40.0;
 	self.transform = TTRotateTransformForOrientation( TTInterfaceOrientation() );
 
 	// Adjust our xPos
-	CGFloat startXPos = ( TTScreenBounds().size.width - 280.0 ) / 2.0;
-	
-	self.frame = CGRectMake( startXPos, self.frame.origin.y, 280.0, self.frame.size.height );
+    self.left = ( TTScreenBounds().size.width - self.frame.size.width ) / 2.0;
+//	self.frame = CGRectMake( startXPos, self.frame.origin.y, 280.0, self.frame.size.height );
 }
 
 

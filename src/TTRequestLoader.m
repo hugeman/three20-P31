@@ -217,7 +217,10 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
   } else {
     TTDCONDITIONLOG(TTDFLAG_URLREQUEST, @"  FAILED LOADING (%d) %@", _response.statusCode, _URL);
     NSError* error = [NSError errorWithDomain:NSURLErrorDomain code:_response.statusCode
-                                     userInfo:nil];
+                                     userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                               _response, @"response",
+                                               _responseData, @"responseData",
+                                               nil]];
     [_queue performSelector:@selector(loader:didFailLoadWithError:) withObject:self
                  withObject:error];
   }
