@@ -9,13 +9,8 @@
 
 #define STRING_IS_EMPTY_OR_NIL( _STRING ) ( _STRING == nil || [_STRING isEmptyOrWhitespace] )
 
-#import <Three20/TTGlobalCore.h>
-
 // Global
 #import "P31StyleSheet.h"
-
-// Launcher
-#import "P31LauncherViewController.h"
 
 // Views
 #import "P31AlertView.h"
@@ -25,3 +20,10 @@
 
 // Styles
 #import "P31PopupButtonCalloutShape.h"
+
+// Categories on TT Classes
+#import "TTNavigatorCategory.h"
+#import "NSStringCategory.h"
+#import "TTLauncherViewCategory.h"
+#import "TTTableViewCategory.h"
+#import "TTTableViewDelegateCategory.h"

@@ -6,9 +6,6 @@
 //  Copyright 2009 FreedomVOICE. All rights reserved.
 //
 
-#import <Three20/TTGlobalCore.h>
-#import <Three20/TTView.h>
-
 
 @protocol P31AlertViewDelegate;
 
