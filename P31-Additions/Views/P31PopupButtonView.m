@@ -7,7 +7,6 @@
 //
 
 #import "P31PopupButtonView.h"
-#import <Three20/TTStyleSheet.h>
 #import "P31.h"
 
 

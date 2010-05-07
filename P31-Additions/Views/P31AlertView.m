@@ -9,9 +9,6 @@
 #import "P31AlertView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "P31.h"
-#import <Three20/TTStyleSheet.h>
-#import <Three20/TTButton.h>
-#import <Three20/TTURLCache.h>
 
 
 #define kAlertBackgroundImageTag 55
