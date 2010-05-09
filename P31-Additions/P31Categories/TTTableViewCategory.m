@@ -34,7 +34,7 @@ static BOOL _styledLabelLinkSelectionOnly = NO;
 	}
 	
 	// If we are set to only allow selection of styled label links then we turn off table row selection if a label was touched
-	if( _styledLabelLinkSelectionOnly )
+	if( _styledLabelLinkSelectionOnly ) // P31 Addition
 		self.allowsSelection = ( label == nil );
 }
 

@@ -10,15 +10,21 @@
 #import "Three20UI/TTLauncherButton.h"
 
 
+@interface TTLauncherView(Private)
+- (void)startDraggingButton:(TTLauncherButton*)button withEvent:(UIEvent*)event;
+@end
+
+
+
 @implementation TTLauncherView(Category)
 
 - (void)editHoldTimer:(NSTimer*)timer
 {
 	_editHoldTimer = nil;
 	
-	if( [_delegate respondsToSelector:@selector(launcherViewShouldBeginEditing:)] )
+	if( [_delegate respondsToSelector:@selector(launcherViewShouldBeginEditing:)] ) // P31 Addition
 	{
-		if( ![_delegate launcherViewShouldBeginEditing:self] )
+		if( ![_delegate performSelector:@selector(launcherViewShouldBeginEditing:) withObject:self] )
 			return;
 	}
 	

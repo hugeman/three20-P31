@@ -16,6 +16,8 @@
 	id<TTTableViewDataSource> dataSource = (id<TTTableViewDataSource>)tableView.dataSource;
 	id object = [dataSource tableView:tableView objectForRowAtIndexPath:indexPath];
 	
+	// Added section to automatically wrap up any TTTableItem userInfo objects.  If it is a dictionary, it gets sent directly
+	// If it is not, it is put in a dictionary and sent as they __userInfo__ key
 	if( [object isKindOfClass:[TTTableLinkedItem class]] )
 	{
 		TTTableLinkedItem* item = object;
