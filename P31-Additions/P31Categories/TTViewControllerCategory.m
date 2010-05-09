@@ -11,6 +11,19 @@
 
 @implementation TTViewController(Category)
 
+- (id)init {
+	if (self = [super init]) {
+		_navigationBarStyle = UIBarStyleDefault;
+
+		_statusBarStyle = TTSTYLEVAR(statusBarStyle); // P31 Addition
+		
+		self.navigationBarTintColor = TTSTYLEVAR(navigationBarTintColor);
+	}
+	
+	return self;
+}
+
+
 - (void)setSearchViewController:(TTTableViewController*)searchViewController {
 	if (searchViewController) {
 		if (nil == _searchController) {
