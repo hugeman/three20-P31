@@ -11,10 +11,21 @@
 
 @implementation TTViewController(Category)
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+		_navigationBarStyle = UIBarStyleDefault;
+		_statusBarStyle = TTSTYLEVAR(statusBarStyle); // P31 Addition
+		
+		self.navigationBarTintColor = TTSTYLEVAR(navigationBarTintColor);
+	}
+	
+	return self;
+}
+
+
 - (id)init {
 	if (self = [super init]) {
 		_navigationBarStyle = UIBarStyleDefault;
-
 		_statusBarStyle = TTSTYLEVAR(statusBarStyle); // P31 Addition
 		
 		self.navigationBarTintColor = TTSTYLEVAR(navigationBarTintColor);
