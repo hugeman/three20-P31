@@ -24,11 +24,8 @@
 
 
 - (id)init {
-	if (self = [super init]) {
-		_navigationBarStyle = UIBarStyleDefault;
-		_statusBarStyle = TTSTYLEVAR(statusBarStyle); // P31 Addition
-		
-		self.navigationBarTintColor = TTSTYLEVAR(navigationBarTintColor);
+	if (self = [super initWithNibName:nil bundle:nil]) {
+
 	}
 	
 	return self;
