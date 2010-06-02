@@ -24,7 +24,7 @@
 
 
 - (id)init {
-	if (self = [super initWithNibName:nil bundle:nil]) {
+	if (self = [self initWithNibName:nil bundle:nil]) {
 
 	}
 	
