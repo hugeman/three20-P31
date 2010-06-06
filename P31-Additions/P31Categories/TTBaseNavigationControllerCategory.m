@@ -37,8 +37,7 @@
 				// Create a keyframe animation to zoom in/out
 				CAKeyframeAnimation *zoomIn = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomIn.delegate = self;
-				NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:1.0], nil];
-				zoomIn.values = values;
+				zoomIn.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:1.0], nil];
 				zoomIn.duration = ttkDefaultFastTransitionDuration;
 				[controller.view.layer addAnimation:zoomIn forKey:@"transformScale"];
 				
@@ -49,8 +48,7 @@
 				// Create a keyframe animation to zoom in/out
 				CAKeyframeAnimation *zoomOut = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomOut.delegate = self;
-				NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0], [NSNumber numberWithFloat:0.0], nil];
-				zoomOut.values = values;
+				zoomOut.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0], [NSNumber numberWithFloat:0.0], nil];
 				zoomOut.duration = ttkDefaultFastTransitionDuration;
 				[controller.view.layer addAnimation:zoomOut forKey:@"transformScale"];
 				
@@ -81,6 +79,7 @@
 
 - (UIViewController*)popViewControllerAnimatedWithTransition:(UIViewAnimationTransition)transition
 {
+	// Don't pop the viewController yet because if we are zooming it out, we need it to stick around
 	UIViewController *poppedController = [self.viewControllers lastObject];
 	
 	// Are we popping a standard UIViewAnimationTransition or custom? (custom will be 10 or greater)
@@ -102,8 +101,7 @@
 				// Create a keyframe animation to zoom in/out
 				CAKeyframeAnimation *zoomIn = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomIn.delegate = self;
-				NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.01], [NSNumber numberWithFloat:1.0], nil];
-				zoomIn.values = values;
+				zoomIn.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.01], [NSNumber numberWithFloat:1.0], nil];
 				zoomIn.duration = ttkDefaultFastTransitionDuration;
 				[poppedController.view.layer addAnimation:zoomIn forKey:@"transformScale"];
 				
@@ -114,8 +112,7 @@
 				// Create a keyframe animation to zoom in/out
 				CAKeyframeAnimation *zoomOut = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomOut.delegate = self;
-				NSArray *values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0], [NSNumber numberWithFloat:0.0], nil];
-				zoomOut.values = values;
+				zoomOut.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0], [NSNumber numberWithFloat:0.0], nil];
 				zoomOut.duration = ttkDefaultFastTransitionDuration;
 				[poppedController.view.layer addAnimation:zoomOut forKey:@"transformScale"];
 
@@ -126,7 +123,7 @@
 				// Create a fade animation and apply it to the superview's layer
 				CATransition *animation = [CATransition animation];
 				[animation setType:kCATransitionFade];
-				[poppedController.view.layer addAnimation:animation forKey:@"layerAnimation"];
+				[self.view.superview.layer addAnimation:animation forKey:@"layerAnimation"];
 
 				break;
 			}
@@ -145,7 +142,8 @@
 	// We will do the actual viewController popping after a short delay for zooms
 	if( transition == kUIViewAnimationTransitionZoomIn || transition == kUIViewAnimationTransitionZoomOut )
 	{
-		[self performSelector:@selector(popViewControllerAnimated:) withObject:nil afterDelay:ttkDefaultFastTransitionDuration];
+		// To ensure that the view is removed from the stack before the animation completes (to avoid flicker) pop the VC just before the animation is done
+		[self performSelector:@selector(popViewControllerAnimated:) withObject:nil afterDelay:ttkDefaultFastTransitionDuration - 0.05];
 		return poppedController;
 	}
 	
@@ -186,17 +184,6 @@
 
 - (void)animationDidStop:(CAAnimation*)theAnimation finished:(BOOL)flag
 {
-	// If this is a CAKeyframeAnimation we might have to manually pop
-	if( [theAnimation isKindOfClass:[CAKeyframeAnimation class]] )
-	{
-		NSArray *values = ((CAKeyframeAnimation*)theAnimation).values;
-		NSNumber *lastValue = [values lastObject];
-		
-		// Is this a zoomOut?  If so, pop the viewController here
-		//if( [lastValue floatValue] == 0.0 )
-		//	[self popViewControllerAnimated:NO];
-	}
-	
 	// Call the standard, UIViewTransition didStop selector
 	[self pushAnimationDidStop];
 }
