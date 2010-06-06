@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* P31_Additions_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* P31_Additions_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		C690E58C11B8C11B00EAB4AC /* TTURLRequestCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = C690E58A11B8C11B00EAB4AC /* TTURLRequestCategory.h */; };
-		C690E58D11B8C11B00EAB4AC /* TTURLRequestCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C690E58B11B8C11B00EAB4AC /* TTURLRequestCategory.m */; };
+		C64F345611BC4BC400156BCB /* TTBaseNavigationControllerCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = C64F345411BC4BC400156BCB /* TTBaseNavigationControllerCategory.h */; };
+		C64F345711BC4BC400156BCB /* TTBaseNavigationControllerCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C64F345511BC4BC400156BCB /* TTBaseNavigationControllerCategory.m */; };
 		C6EFE8C411964EA4000DF055 /* P31.h in Headers */ = {isa = PBXBuildFile; fileRef = C6EFE8A511964EA4000DF055 /* P31.h */; };
 		C6EFE8C511964EA4000DF055 /* P31StyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = C6EFE8A611964EA4000DF055 /* P31StyleSheet.h */; };
 		C6EFE8C611964EA4000DF055 /* P31StyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EFE8A711964EA4000DF055 /* P31StyleSheet.m */; };
@@ -183,8 +183,8 @@
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* P31_Additions_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P31_Additions_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C690E58A11B8C11B00EAB4AC /* TTURLRequestCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTURLRequestCategory.h; sourceTree = "<group>"; };
-		C690E58B11B8C11B00EAB4AC /* TTURLRequestCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTURLRequestCategory.m; sourceTree = "<group>"; };
+		C64F345411BC4BC400156BCB /* TTBaseNavigationControllerCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBaseNavigationControllerCategory.h; sourceTree = "<group>"; };
+		C64F345511BC4BC400156BCB /* TTBaseNavigationControllerCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBaseNavigationControllerCategory.m; sourceTree = "<group>"; };
 		C6EFE8A511964EA4000DF055 /* P31.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P31.h; sourceTree = "<group>"; };
 		C6EFE8A611964EA4000DF055 /* P31StyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P31StyleSheet.h; sourceTree = "<group>"; };
 		C6EFE8A711964EA4000DF055 /* P31StyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P31StyleSheet.m; sourceTree = "<group>"; };
@@ -308,6 +308,8 @@
 		C6EFE8A811964EA4000DF055 /* P31Categories */ = {
 			isa = PBXGroup;
 			children = (
+				C64F345411BC4BC400156BCB /* TTBaseNavigationControllerCategory.h */,
+				C64F345511BC4BC400156BCB /* TTBaseNavigationControllerCategory.m */,
 				C6EFE8A911964EA4000DF055 /* NSStringCategory.h */,
 				C6EFE8AA11964EA4000DF055 /* NSStringCategory.m */,
 				C6EFE8AB11964EA4000DF055 /* TTLauncherViewCategory.h */,
@@ -322,8 +324,6 @@
 				C6EFE94511965543000DF055 /* TTTableViewControllerCategory.m */,
 				C6EFE981119658BA000DF055 /* TTViewControllerCategory.h */,
 				C6EFE982119658BA000DF055 /* TTViewControllerCategory.m */,
-				C690E58A11B8C11B00EAB4AC /* TTURLRequestCategory.h */,
-				C690E58B11B8C11B00EAB4AC /* TTURLRequestCategory.m */,
 			);
 			path = P31Categories;
 			sourceTree = "<group>";
@@ -447,7 +447,7 @@
 				C6EFE8DD11964EA4000DF055 /* P31Window.h in Headers */,
 				C6EFE94611965543000DF055 /* TTTableViewControllerCategory.h in Headers */,
 				C6EFE983119658BA000DF055 /* TTViewControllerCategory.h in Headers */,
-				C690E58C11B8C11B00EAB4AC /* TTURLRequestCategory.h in Headers */,
+				C64F345611BC4BC400156BCB /* TTBaseNavigationControllerCategory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,7 +628,7 @@
 				C6EFE8DE11964EA4000DF055 /* P31Window.m in Sources */,
 				C6EFE94711965543000DF055 /* TTTableViewControllerCategory.m in Sources */,
 				C6EFE984119658BA000DF055 /* TTViewControllerCategory.m in Sources */,
-				C690E58D11B8C11B00EAB4AC /* TTURLRequestCategory.m in Sources */,
+				C64F345711BC4BC400156BCB /* TTBaseNavigationControllerCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
