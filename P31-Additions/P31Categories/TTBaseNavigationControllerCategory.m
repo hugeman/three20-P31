@@ -72,6 +72,36 @@
 				
 				break;
 			}
+			case kUIViewAnimationTransitionMoveIn:
+			case kUIViewAnimationTransitionMoveOut:
+			{
+				// Create a fade animation and apply it to the superview's layer
+				CATransition *animation = [CATransition animation];
+				[animation setType:kCATransitionMoveIn];
+				[self.view.superview.layer addAnimation:animation forKey:@"layerAnimation"];
+				
+				break;
+			}
+			case kUIViewAnimationTransitionPushIn:
+			case kUIViewAnimationTransitionPushOut:
+			{
+				// Create a fade animation and apply it to the superview's layer
+				CATransition *animation = [CATransition animation];
+				[animation setType:kCATransitionPush];
+				[self.view.superview.layer addAnimation:animation forKey:@"layerAnimation"];
+				
+				break;
+			}
+			case kUIViewAnimationTransitionRevealIn:
+			case kUIViewAnimationTransitionRevealOut:
+			{
+				// Create a fade animation and apply it to the superview's layer
+				CATransition *animation = [CATransition animation];
+				[animation setType:kCATransitionReveal];
+				[self.view.superview.layer addAnimation:animation forKey:@"layerAnimation"];
+				
+				break;
+			}
 		}
 	}
 }
@@ -136,6 +166,39 @@
 				
 				break;
 			}
+			case kUIViewAnimationTransitionMoveOut:
+			case kUIViewAnimationTransitionMoveIn:
+			{
+				// Create a fade animation and apply it to the superview's layer
+				CATransition *animation = [CATransition animation];
+				[animation setType:kCATransitionMoveIn];
+				[animation setSubtype:kCATransitionFromRight];
+				[self.view.superview.layer addAnimation:animation forKey:@"layerAnimation"];
+				
+				break;
+			}
+			case kUIViewAnimationTransitionPushIn:
+			case kUIViewAnimationTransitionPushOut:
+			{
+				// Create a fade animation and apply it to the superview's layer
+				CATransition *animation = [CATransition animation];
+				[animation setType:kCATransitionPush];
+				[animation setSubtype:kCATransitionFromRight];
+				[self.view.superview.layer addAnimation:animation forKey:@"layerAnimation"];
+				
+				break;
+			}
+			case kUIViewAnimationTransitionRevealIn:
+			case kUIViewAnimationTransitionRevealOut:
+			{
+				// Create a fade animation and apply it to the superview's layer
+				CATransition *animation = [CATransition animation];
+				[animation setType:kCATransitionReveal];
+				[animation setSubtype:kCATransitionFromRight];
+				[self.view.superview.layer addAnimation:animation forKey:@"layerAnimation"];
+				
+				break;
+			}
 		}
 	}
 	
@@ -172,6 +235,18 @@
 			return kUIViewAnimationTransitionFadeIn;
 		case kUIViewAnimationTransitionFadeIn:
 			return kUIViewAnimationTransitionFadeOut;
+		case kUIViewAnimationTransitionMoveIn:
+			return kUIViewAnimationTransitionMoveOut;
+		case kUIViewAnimationTransitionMoveOut:
+			return kUIViewAnimationTransitionMoveIn;
+		case kUIViewAnimationTransitionPushIn:
+			return kUIViewAnimationTransitionPushOut;
+		case kUIViewAnimationTransitionPushOut:
+			return kUIViewAnimationTransitionPushIn;
+		case kUIViewAnimationTransitionRevealIn:
+			return kUIViewAnimationTransitionRevealOut;
+		case kUIViewAnimationTransitionRevealOut:
+			return kUIViewAnimationTransitionRevealIn;
 			
 		default:
 			return UIViewAnimationTransitionNone;
