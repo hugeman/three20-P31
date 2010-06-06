@@ -38,7 +38,7 @@
 				CAKeyframeAnimation *zoomIn = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomIn.delegate = self;
 				zoomIn.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:1.0], nil];
-				zoomIn.duration = ttkDefaultFastTransitionDuration;
+				zoomIn.duration = ttkDefaultTransitionDuration;
 				[controller.view.layer addAnimation:zoomIn forKey:@"transformScale"];
 				
 				break;
@@ -49,7 +49,7 @@
 				CAKeyframeAnimation *zoomOut = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomOut.delegate = self;
 				zoomOut.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0], [NSNumber numberWithFloat:0.0], nil];
-				zoomOut.duration = ttkDefaultFastTransitionDuration;
+				zoomOut.duration = ttkDefaultTransitionDuration;
 				[controller.view.layer addAnimation:zoomOut forKey:@"transformScale"];
 				
 				break;
@@ -102,7 +102,7 @@
 				CAKeyframeAnimation *zoomIn = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomIn.delegate = self;
 				zoomIn.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.01], [NSNumber numberWithFloat:1.0], nil];
-				zoomIn.duration = ttkDefaultFastTransitionDuration;
+				zoomIn.duration = ttkDefaultTransitionDuration;
 				[poppedController.view.layer addAnimation:zoomIn forKey:@"transformScale"];
 				
 				break;
@@ -113,7 +113,7 @@
 				CAKeyframeAnimation *zoomOut = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
 				zoomOut.delegate = self;
 				zoomOut.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0], [NSNumber numberWithFloat:0.0], nil];
-				zoomOut.duration = ttkDefaultFastTransitionDuration;
+				zoomOut.duration = ttkDefaultTransitionDuration;
 				[poppedController.view.layer addAnimation:zoomOut forKey:@"transformScale"];
 
 				break;
@@ -143,7 +143,7 @@
 	if( transition == kUIViewAnimationTransitionZoomIn || transition == kUIViewAnimationTransitionZoomOut )
 	{
 		// To ensure that the view is removed from the stack before the animation completes (to avoid flicker) pop the VC just before the animation is done
-		[self performSelector:@selector(popViewControllerAnimated:) withObject:nil afterDelay:ttkDefaultFastTransitionDuration - 0.05];
+		[self performSelector:@selector(popViewControllerAnimated:) withObject:nil afterDelay:ttkDefaultTransitionDuration - 0.1];
 		return poppedController;
 	}
 	
