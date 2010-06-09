@@ -7,7 +7,7 @@
 //
 
 #import "P31RadialShine.h"
-#import "TTCorePreprocessorMacros.h"
+#import "Three20Core/TTCorePreprocessorMacros.h"
 
 
 @implementation P31RadialShine

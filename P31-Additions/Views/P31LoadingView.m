@@ -4,7 +4,7 @@
 
 
 #import "P31LoadingView.h"
-#import "TTURLCache.h"
+#import "Three20Network/TTURLCache.h"
 #import <QuartzCore/QuartzCore.h>
 #import "P31StyleSheet.h"
 
